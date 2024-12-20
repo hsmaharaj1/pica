@@ -1,0 +1,19 @@
+{
+    "compilerOptions": {
+      "module": "CommonJS", // Use CommonJS for Node.js modules
+      "moduleResolution": "Node",
+      "target": "ESNext",
+      "allowSyntheticDefaultImports": true,
+      "esModuleInterop": true,
+      "strict": true,
+      "baseUrl": ".",
+      "paths": {
+        "@/*": ["src/*"]
+      },
+      "resolveJsonModule": true,
+      "skipLibCheck": true
+    },
+    "include": ["src/server", "src/utils"],
+    "exclude": ["node_modules", "dist", "build"]
+  }
+  

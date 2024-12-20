@@ -1,0 +1,11 @@
+{
+    "extends": "./jsconfig.app.json", // Default to app-specific configuration
+    "compilerOptions": {
+      "baseUrl": ".",
+      "paths": {
+        "@/*": ["src/*"]
+      }
+    },
+    "exclude": ["node_modules"]
+  }
+  
