@@ -40,7 +40,7 @@ const PersonalDetailsPage = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50">
+    <div className="min-h-screen flex items-center justify-center">
       <Card className="w-full max-w-md p-6">
         <CardHeader className="space-y-2 text-center">
           <CardTitle className="text-3xl font-bold">Let's Partner Up</CardTitle>
@@ -51,7 +51,6 @@ const PersonalDetailsPage = () => {
             <div className="w-2 h-2 rounded-full bg-gray-200"></div>
             <div className="w-2 h-2 rounded-full bg-gray-200"></div>
             <div className="w-2 h-2 rounded-full bg-purple-500"></div>
-            <div className="w-2 h-2 rounded-full bg-gray-200"></div>
           </div>
         </CardHeader>
         
@@ -87,7 +86,7 @@ const PersonalDetailsPage = () => {
             </div>
             
             <div className="space-y-2">
-              <label className="text-gray-700">Delivery Services or not</label>
+              <label className="text-gray-700">Delivery Services</label>
               <Select>
                 <SelectTrigger className="w-full">
                   <SelectValue placeholder="Do you offer delivery?" />

@@ -12,7 +12,7 @@ const Partner = () => {
   const { setPage } = usePage();
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50">
+    <div className="min-h-screen flex items-center justify-center">
       <Card className="w-full max-w-md p-6">
         <CardHeader className="space-y-2 text-center">
           <CardTitle className="text-3xl font-bold">Let's Partner Up</CardTitle>
@@ -21,7 +21,6 @@ const Partner = () => {
           {/* Progress Indicator */}
           <div className="flex justify-center items-center gap-2 mt-4">
             <div className="w-2 h-2 rounded-full bg-purple-500"></div>
-            <div className="w-2 h-2 rounded-full bg-gray-200"></div>
             <div className="w-2 h-2 rounded-full bg-gray-200"></div>
             <div className="w-2 h-2 rounded-full bg-gray-200"></div>
           </div>
