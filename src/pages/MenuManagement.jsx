@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import Dashboard from '@/components/Dashboard';
+import Offers from '@/components/Offers';
 import FAQ from '@/components/FAQ';
 import ProductMenu from '@/components/ProductMenu';
 import { Button } from '@/components/ui/button';
@@ -87,7 +87,7 @@ export default function MenuManagement() {
           </div>
         </header>
         <div className="p-6 flex-1">
-          {activeSection === 'dashboard' ? (<Dashboard />) : (activeSection === 'product' ? (<ProductMenu />) : (<FAQ />))}
+          {(activeSection === 'product' ? (<ProductMenu />) : (activeSection === 'FAQ' ? (<FAQ />) : (<Offers />)))}
         </div>
       </div>
     </div>
