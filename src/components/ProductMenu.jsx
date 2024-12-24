@@ -19,17 +19,28 @@ import { Label } from './ui/label';
 import { Input } from './ui/input';
 import { Textarea } from "@/components/ui/textarea";
 import { PenIcon, Trash2Icon, X as CloseIcon, Upload } from 'lucide-react';
+import { Badge } from './ui/badge';
 
 export default function ProductMenu() {
 
   const [products, setProducts] = useState([{
     id: 1,
-    image: "/api/placeholder/40/40",
+    image: "https://fastly.picsum.photos/id/48/5000/3333.jpg?hmac=y3_1VDNbhii0vM_FN6wxMlvK27vFefflbUSH06z98so",
     name: "Product Name",
     category: "Lorem",
     offerType: "ipsum",
     stock: "899",
     status: "Active",
+    price: "1500"
+  },
+  {
+    id: 2,
+    image: "https://fastly.picsum.photos/id/48/5000/3333.jpg?hmac=y3_1VDNbhii0vM_FN6wxMlvK27vFefflbUSH06z98so",
+    name: "Product Name",
+    category: "Lorem",
+    offerType: "ipsum",
+    stock: "899",
+    status: "Deactivated",
     price: "1500"
   }]);
   const [isAddProductOpen, setIsAddProductOpen] = useState(false);
@@ -296,7 +307,7 @@ export default function ProductMenu() {
             </Select>
           </div>
 
-          <Button type="submit" className="w-full bg-indigo-600 hover:bg-indigo-500">
+          <Button type="submit" className="w-full bg-[#6E6CDF] hover:bg-indigo-500">
             Add Product
           </Button>
         </form>
@@ -306,110 +317,109 @@ export default function ProductMenu() {
 
   return (
     <div className="bg-white rounded-lg shadow">
-      <div className="flex items-center justify-between p-6">
-        <h2 className="text-xl font-semibold">All Products</h2>
-        <Button
-          className="bg-indigo-600 hover:bg-indigo-500"
-          onClick={() => setIsAddProductOpen(true)}
-        >
-          Add Product +
-        </Button>
-      </div>
-
-      <Table>
-        <TableHeader>
-          <TableRow>
-            <TableHead>Product</TableHead>
-            <TableHead>Category</TableHead>
-            <TableHead>Offer Type</TableHead>
-            <TableHead>Stock</TableHead>
-            <TableHead>Status</TableHead>
-            <TableHead>Price</TableHead>
-            <TableHead>Action</TableHead>
-          </TableRow>
-        </TableHeader>
-        <TableBody>
-          {currentProducts.map((product) => (
-            <TableRow key={product.id}>
-              <TableCell className="flex items-center gap-2">
-                <img
-                  src={product.image}
-                  alt={product.name}
-                  className="w-10 h-10 rounded"
-                />
-                <span>{product.name}</span>
-              </TableCell>
-              <TableCell>{product.category}</TableCell>
-              <TableCell>{product.offerType}</TableCell>
-              <TableCell>{product.stock}</TableCell>
-              <TableCell>
-                <Select
-                  value={product.status}
-                  onValueChange={(value) => handleStatusChange(product.id, value)}
-                >
-                  <SelectTrigger className="w-[100px]">
-                    <SelectValue>
-                      <span className={`px-2 py-1 rounded text-sm ${product.status === 'Active' ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'
-                        }`}>
-                        {product.status}
-                      </span>
-                    </SelectValue>
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="Active">Active</SelectItem>
-                    <SelectItem value="Deactivated">Deactivated</SelectItem>
-                  </SelectContent>
-                </Select>
-              </TableCell>
-              <TableCell>${product.price}</TableCell>
-              <TableCell>
-                <div className="flex items-center gap-2">
-                  <Button variant="ghost" size="icon">
-                    <PenIcon className="w-4 h-4" />
-                  </Button>
-                  <Button
-                    variant="ghost"
-                    size="icon"
-                    onClick={() => handleDelete(product.id)}
-                  >
-                    <Trash2Icon className="w-4 h-4" />
-                  </Button>
-                </div>
-              </TableCell>
-            </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-
-      <div className="flex items-center justify-between px-6 py-4 border-t">
-        <Button
-          variant="outline"
-          onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
-          disabled={currentPage === 1}
-        >
-          Previous Page
-        </Button>
-        <div className="flex items-center gap-2">
-          {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
-            <Button
-              key={page}
-              variant={currentPage === page ? "default" : "outline"}
-              onClick={() => setCurrentPage(page)}
-              className="w-8 h-8 p-0"
-            >
-              {page}
-            </Button>
-          ))}
+      <div className='p-[1.5%]'>
+        <div className="flex items-center justify-between p-4">
+          <h2 className="text-xl font-poppins text-[#757575] font-semibold">All Products</h2>
+          <Button
+            className="bg-[#6E6CDF] hover:bg-indigo-500"
+            onClick={() => setIsAddProductOpen(true)}
+          >
+            Add Product +
+          </Button>
         </div>
-        <Button
-          variant="outline"
-          onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))}
-          disabled={currentPage === totalPages}
-        >
-          Next Page →
-        </Button>
+
+        <Table>
+          <TableHeader className="rounded-lg bg-[#F5F5F5] text-[#757575] font-poppins font-semibold">
+
+            <TableRow>
+              <TableHead>Product</TableHead>
+              <TableHead>Category</TableHead>
+              <TableHead>Offer Type</TableHead>
+              <TableHead>Stock</TableHead>
+              <TableHead>Status</TableHead>
+              <TableHead>Price</TableHead>
+              <TableHead>Action</TableHead>
+            </TableRow>
+
+          </TableHeader>
+
+          <TableBody>
+            {currentProducts.map((product) => (
+              <TableRow key={product.id}>
+                <TableCell className="flex items-center gap-2">
+                  <img
+                    src={product.image}
+                    alt={product.name}
+                    className="w-10 h-10 rounded"
+                  />
+                  <span>{product.name}</span>
+                </TableCell>
+                <TableCell>
+                  <Badge variant="secondary" className="h-[2rem] rounded-md">{product.category}</Badge>
+                </TableCell>
+                <TableCell>{product.offerType}</TableCell>
+                <TableCell>{product.stock}</TableCell>
+
+                <TableCell>
+                  {product.status == "Active" ?
+                    <Badge variant="secondary" className="bg-[#E6F7D9] text-[#56CA00] text-[0.9rem] rounded-md">Active</Badge>
+                    : 
+                    <Badge variant="secondary" className="bg-[#FFE4E5] text-[#FF4C51] text-[0.9rem] rounded-md">Deactivated</Badge>
+                  }
+
+
+                </TableCell>
+
+                <TableCell>${product.price}</TableCell>
+                <TableCell>
+                  <div className="flex items-center gap-2">
+                    <Button variant="ghost" size="icon">
+                      <PenIcon className="w-4 h-4" />
+                    </Button>
+                    <Button
+                      variant="ghost"
+                      size="icon"
+                      onClick={() => handleDelete(product.id)}
+                    >
+                      <Trash2Icon className="w-4 h-4" />
+                    </Button>
+                  </div>
+                </TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+
+        <div className="flex items-center justify-between px-6 py-4 border-t">
+          <Button
+            variant="outline"
+            onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
+            disabled={currentPage === 1}
+          >
+            Previous Page
+          </Button>
+          <div className="flex items-center gap-2">
+            {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
+              <Button
+                key={page}
+                variant={currentPage === page ? "default" : "outline"}
+                onClick={() => setCurrentPage(page)}
+                className="w-8 h-8 p-0"
+              >
+                {page}
+              </Button>
+            ))}
+          </div>
+          <Button
+            variant="outline"
+            onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))}
+            disabled={currentPage === totalPages}
+          >
+            Next Page →
+          </Button>
+        </div>
+        {isAddProductOpen ? AddProductPanel() : null}
       </div>
-      {isAddProductOpen ? AddProductPanel() : null}
     </div>
   )
 }

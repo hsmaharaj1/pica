@@ -8,6 +8,8 @@ import partnerLogo from "../assets/partnerlogo.svg"
 
 export default function MenuManagement() {
   const [activeSection, setActiveSection] = useState('product');
+  const [username, setUsername] = useState('Mr. Saad')
+  const [ppurl, setPpurl] = useState('/profilepic')
 
   const handleLogout = () => {
     console.log('Logging out...');
@@ -15,8 +17,8 @@ export default function MenuManagement() {
 
   return (
     <div className="min-h-screen bg-gray-50 flex">
-      <div className="w-64 bg-white border-r min-h-screen flex flex-col">
-        <div className="p-6 border-b">
+      <div className="w-64 bg-white min-h-screen flex flex-col">
+        <div className="p-6">
           <div className="flex items-center gap-2">
             <img src={partnerLogo} alt="Logo" className="" />
           </div>
@@ -63,7 +65,7 @@ export default function MenuManagement() {
           </nav>
         </div>
 
-        <div className="p-6 border-t">
+        <div className="p-6">
           <Button
             variant="ghost"
             className="w-full justify-start gap-2 text-red-600 hover:text-red-700 hover:bg-red-50"
@@ -75,11 +77,11 @@ export default function MenuManagement() {
         </div>
       </div>
       <div className="flex-1 flex flex-col">
-        <header className="bg-white border-b">
+        <header className="bg-white">
           <div className="flex items-center justify-end gap-6 px-6 py-4">
-            <div className="flex flex-col items-center ">
-              <div>Welcome</div>
-              <div>Mr. Saad</div>
+            <div className="flex flex-col items-start font-poppins">
+              <div className='text-[#9E9E9E]'>Welcome</div>
+              <div className='text-[#8A8D93] font-semibold text-xl'>{username}</div>
             </div>
             <CircleUserRound className='w-8 h-8 rounded-full'/>
           </div>
