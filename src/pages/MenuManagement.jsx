@@ -24,12 +24,12 @@ export default function MenuManagement() {
           </div>
         </div>
 
-        <div className="flex-1 py-6">
+        <div className="flex-1 py-6 px-6">
           <p className="px-6 text-sm font-medium text-gray-500 mb-4">General</p>
           <nav className="space-y-1">
             <Button
               variant={activeSection === 'dashboard' ? 'secondary' : 'ghost'}
-              className="w-full justify-start gap-2 px-6"
+              className="w-full justify-start gap-2 px-6 rounded-full"
               onClick={() => setActiveSection('dashboard')}
               disabled
             >
@@ -38,7 +38,7 @@ export default function MenuManagement() {
             </Button>
             <Button
               variant={activeSection === 'product' ? 'secondary' : 'ghost'}
-              className="w-full justify-start gap-2 px-6"
+              className="w-full justify-start gap-2 px-6 rounded-full"
               onClick={() => setActiveSection('product')}
               
             >
@@ -47,7 +47,7 @@ export default function MenuManagement() {
             </Button>
             <Button
               variant={activeSection === 'Offer' ? 'secondary' : 'ghost'}
-              className="w-full justify-start gap-2 px-6"
+              className="w-full justify-start gap-2 px-6 rounded-full"
               onClick={() => setActiveSection('Offer')}
               
             >
@@ -56,7 +56,7 @@ export default function MenuManagement() {
             </Button>
             <Button
               variant={activeSection === 'FAQ' ? 'secondary' : 'ghost'}
-              className="w-full justify-start gap-1 px-6 mb-3"
+              className="w-full justify-start gap-1 px-6 mb-3 rounded-full"
               onClick={() => setActiveSection('FAQ')}
             >
               <MessageIcon className="w-5 h-5" />
