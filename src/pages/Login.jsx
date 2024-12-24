@@ -16,7 +16,7 @@ const Login = () => {
       <div className='flex overflow-hidden'>
         <div className='flex flex-col justify-center align-middle w-[50%]'>
           <div className="min-h-screen flex items-center justify-center">
-            <Card className="w-full max-w-md p-6">
+            <div className="w-full max-w-md">
               <CardHeader className="space-y-2 text-center">
                 <CardTitle className="text-3xl font-bold">Welcome Back</CardTitle>
                 <p className="text-gray-500">Please login your account</p>
@@ -81,7 +81,7 @@ const Login = () => {
                   </Button>
                 </p>
               </CardContent>
-            </Card>
+            </div>
           </div>
         </div>
         <div className='w-[50%] flex justify-end'>
