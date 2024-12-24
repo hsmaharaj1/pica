@@ -15,10 +15,12 @@ export default function PartnerPage() {
 
     return (
         <div className='flex flex-col h-screen w-full'>
-            <div className='h-[10%]'>Picapool</div>
+            <div className='h-[10%] p-[1%]'>
+                <img src={logo} alt="PicaPool" />
+            </div>
             <div className='flex overflow-hidden'>
                 <div className='w-[50%] flex justify-end'>
-                    <img src={loginImg} alt="Login" className='w-[70%] mr-[10%]'/>
+                    <img src={loginImg} alt="Login" className='w-[70%] mr-[10%]' />
                 </div>
                 <div className='flex flex-col justify-center align-middle w-[50%]'>
                     <PageContext.Provider value={{ page, setPage }}>
