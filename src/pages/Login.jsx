@@ -15,7 +15,7 @@ const Login = () => {
       </div>
       <div className='flex overflow-hidden'>
         <div className='flex flex-col justify-center align-middle w-[50%]'>
-          <div className="min-h-screen flex items-center justify-center bg-gray-50">
+          <div className="min-h-screen flex items-center justify-center">
             <Card className="w-full max-w-md p-6">
               <CardHeader className="space-y-2 text-center">
                 <CardTitle className="text-3xl font-bold">Welcome Back</CardTitle>
