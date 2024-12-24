@@ -3,6 +3,7 @@ import Partner from '@/components/Partner'
 import StoreDetailsPage from '@/components/StoreDetailsPage'
 import PersonalDetailsPage from '@/components/PersonalDetailsPage'
 import loginImg from '@/assets/login.svg'
+import logo from "../assets/logo.svg"
 
 const PageContext = createContext()
 
