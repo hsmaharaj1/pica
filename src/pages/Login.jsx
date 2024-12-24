@@ -5,11 +5,14 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import google from '../assets/google.svg';
 import loginImg from '../assets/login.svg';
+import logo from "../assets/logo.svg"
 
 const Login = () => {
   return (
     <div className='flex flex-col h-screen w-full'>
-      <div className='h-[10%]'>Picapool</div>
+      <div className='h-[10%] p-[1%]'>
+        <img src={logo} alt="PicaPool" />
+      </div>
       <div className='flex overflow-hidden'>
         <div className='flex flex-col justify-center align-middle w-[50%]'>
           <div className="min-h-screen flex items-center justify-center bg-gray-50">
