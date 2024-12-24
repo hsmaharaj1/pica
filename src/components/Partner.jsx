@@ -12,9 +12,9 @@ const Partner = () => {
   const { setPage } = usePage();
 
   return (
-    <div className="min-h-screen flex items-center justify-center">
-      <Card className="w-full max-w-md p-6">
-        <CardHeader className="space-y-2 text-center">
+    <div className="min-h-screen flex items-center justify-center w-[80%]">
+      <div className="w-full max-w-md p-6">
+        <CardHeader className="space-y-3 text-center">
           <CardTitle className="text-3xl font-bold">Let's Partner Up</CardTitle>
           <p className="text-gray-500">Please create your account</p>
           
@@ -29,7 +29,7 @@ const Partner = () => {
         <CardContent className="space-y-4">
           <div className="grid grid-cols-2 gap-4">
             <div className="space-y-2">
-              <label className="text-gray-700">Owner Name</label>
+              <label className="text-black-700">Owner Name</label>
               <Input 
                 type="text"
                 placeholder="enter owner's name"
@@ -112,7 +112,7 @@ const Partner = () => {
             </Button>
           </p>
         </CardContent>
-      </Card>
+      </div>
     </div>
   );
 };

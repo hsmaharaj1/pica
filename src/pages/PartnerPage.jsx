@@ -21,7 +21,7 @@ export default function PartnerPage() {
             </div>
             <div className='flex overflow-hidden'>
                 <div className='w-[50%] flex justify-end'>
-                    <img src={loginImg} alt="Login" className='w-[70%] mr-[10%]' />
+                    <img src={loginImg} alt="Login" className='w-[70%] mr-[20%]' />
                 </div>
                 <div className='flex flex-col justify-center align-middle w-[50%]'>
                     <PageContext.Provider value={{ page, setPage }}>
