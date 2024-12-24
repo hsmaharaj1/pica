@@ -5,6 +5,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { Eye, EyeOff } from "lucide-react";
 import { usePage } from '@/pages/PartnerPage';
+import progressIndicator from '@/assets/progressIndicator1.svg';
 
 const Partner = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -12,23 +13,21 @@ const Partner = () => {
   const { setPage } = usePage();
 
   return (
-    <div className="min-h-screen flex items-center justify-center w-[80%]">
-      <div className="w-full max-w-md p-6">
+    
+      <div className="w-full">
         <CardHeader className="space-y-3 text-center">
           <CardTitle className="text-3xl font-bold">Let's Partner Up</CardTitle>
           <p className="text-gray-500">Please create your account</p>
           
           {/* Progress Indicator */}
           <div className="flex justify-center items-center gap-2 mt-4">
-            <div className="w-2 h-2 rounded-full bg-purple-500"></div>
-            <div className="w-2 h-2 rounded-full bg-gray-200"></div>
-            <div className="w-2 h-2 rounded-full bg-gray-200"></div>
+            <img src={progressIndicator} alt="progress" />
           </div>
         </CardHeader>
         
         <CardContent className="space-y-4">
           <div className="grid grid-cols-2 gap-4">
-            <div className="space-y-2">
+            <div className="space-y-2 w-[100%]">
               <label className="text-black-700">Owner Name</label>
               <Input 
                 type="text"
@@ -96,10 +95,10 @@ const Partner = () => {
             Continue
           </Button>
           
-          <div className="flex items-center gap-4 w-[42%]">
-            <Separator className="flex-grow"/>
+          <div className="flex items-center gap-4 ml-[37%] w-[2rem]">
+            <Separator className='flex-shrink'/>
             <span className="text-gray-500 text-sm">OR</span>
-            <Separator className="flex-grow"/>
+            <Separator />
           </div>
           
           <p className="text-center text-gray-500">
@@ -113,7 +112,6 @@ const Partner = () => {
           </p>
         </CardContent>
       </div>
-    </div>
   );
 };
 

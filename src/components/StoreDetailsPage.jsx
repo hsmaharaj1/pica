@@ -5,6 +5,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Textarea } from "@/components/ui/textarea";
 import { MapPin, Upload } from "lucide-react";
 import { usePage } from '@/pages/PartnerPage';
+import progressIndicator from '@/assets/progressIndicator2.svg';
 
 const StoreDetailsPage = () => {
   const [dragActive, setDragActive] = useState(false);
@@ -41,16 +42,14 @@ const StoreDetailsPage = () => {
 
   return (
     <div className="min-h-screen flex items-center justify-center">
-      <Card className="w-full max-w-md p-6">
+      <div className="w-full">
         <CardHeader className="space-y-2 text-center">
           <CardTitle className="text-3xl font-bold">Let's Partner Up</CardTitle>
           <p className="text-gray-500">Please enter your store details</p>
           
           {/* Progress Indicator */}
           <div className="flex justify-center items-center gap-2 mt-4">
-            <div className="w-2 h-2 rounded-full bg-gray-200"></div>
-            <div className="w-2 h-2 rounded-full bg-purple-500"></div>
-            <div className="w-2 h-2 rounded-full bg-gray-200"></div>
+            <img src={progressIndicator} alt="progress" />
           </div>
         </CardHeader>
         
@@ -67,7 +66,8 @@ const StoreDetailsPage = () => {
             
             <div className="space-y-2">
               <label className="text-gray-700">About Store</label>
-              <Textarea 
+              <Input
+                type="text" 
                 placeholder="enter store details"
                 className="w-full"
               />
@@ -110,12 +110,12 @@ const StoreDetailsPage = () => {
                 id="file-upload"
               />
               <label htmlFor="file-upload" className="cursor-pointer">
-                <Upload className="mx-auto h-8 w-8 text-gray-400" />
-                <span className="text-purple-500 hover:text-purple-600">Click to upload</span>
-                <span className="text-gray-500"> or drag and drop</span>
-                <p className="text-xs text-gray-500 mt-1">JPG, JPEG, PNG less than 1MB</p>
+                <Upload className="mx-auto h-8 w-8 text-gray-400 " />
+                <span className="text-purple-500 hover:text-purple-600 text-xs">Click to upload</span>
+                <span className="text-gray-500 text-xs"> or drag and drop</span>
+                <p className=" text-gray-500 mt-1 text-xs">JPG, JPEG, PNG less than 1MB</p>
                 {uploadedImage && (
-                  <p className="text-green-600 mt-2">File uploaded: {uploadedImage.name}</p>
+                  <p className="text-green-600 mt-2 text-sm">File uploaded: {uploadedImage.name}</p>
                 )}
               </label>
             </div>
@@ -125,7 +125,7 @@ const StoreDetailsPage = () => {
             Continue
           </Button>
         </CardContent>
-      </Card>
+      </div>
     </div>
   );
 };
