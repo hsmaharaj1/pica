@@ -4,6 +4,7 @@ import FAQ from '@/components/FAQ';
 import ProductMenu from '@/components/ProductMenu';
 import { Button } from '@/components/ui/button';
 import { LayoutDashboard, Package, MessageSquareText as MessageIcon, LogOut, BadgePercent, CircleUserRound } from 'lucide-react';
+import partnerLogo from "../assets/partnerlogo.svg"
 
 export default function MenuManagement() {
   const [activeSection, setActiveSection] = useState('product');
@@ -17,8 +18,7 @@ export default function MenuManagement() {
       <div className="w-64 bg-white border-r min-h-screen flex flex-col">
         <div className="p-6 border-b">
           <div className="flex items-center gap-2">
-            <img src="/api/placeholder/32/32" alt="Logo" className="w-8 h-8" />
-            <h1 className="text-xl font-semibold">Picapool Partners</h1>
+            <img src={partnerLogo} alt="Logo" className="" />
           </div>
         </div>
 
@@ -76,14 +76,12 @@ export default function MenuManagement() {
       </div>
       <div className="flex-1 flex flex-col">
         <header className="bg-white border-b">
-          <div className="flex items-center justify-end px-6 py-4">
-            <div className="flex items-center gap-4">
-              <span>Welcome</span>
-              <div className="flex items-center gap-2">
-                <span>Mr. Saad</span>
-                <CircleUserRound className='w-8 h-8 rounded-full'/>
-              </div>
+          <div className="flex items-center justify-end gap-6 px-6 py-4">
+            <div className="flex flex-col items-center ">
+              <div>Welcome</div>
+              <div>Mr. Saad</div>
             </div>
+            <CircleUserRound className='w-8 h-8 rounded-full'/>
           </div>
         </header>
         <div className="p-6 flex-1">
