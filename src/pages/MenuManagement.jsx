@@ -3,7 +3,7 @@ import Offers from '@/components/Offers';
 import FAQ from '@/components/FAQ';
 import ProductMenu from '@/components/ProductMenu';
 import { Button } from '@/components/ui/button';
-import { LayoutDashboard, Package, MessageSquareText as MessageIcon, LogOut, BadgePercent } from 'lucide-react';
+import { LayoutDashboard, Package, MessageSquareText as MessageIcon, LogOut, BadgePercent, CircleUserRound } from 'lucide-react';
 
 export default function MenuManagement() {
   const [activeSection, setActiveSection] = useState('product');
@@ -81,7 +81,7 @@ export default function MenuManagement() {
               <span>Welcome</span>
               <div className="flex items-center gap-2">
                 <span>Mr. Saad</span>
-                <img src="/api/placeholder/32/32" alt="Profile" className="w-8 h-8 rounded-full" />
+                <CircleUserRound className='w-8 h-8 rounded-full'/>
               </div>
             </div>
           </div>
