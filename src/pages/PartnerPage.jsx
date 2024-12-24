@@ -19,17 +19,13 @@ export default function PartnerPage() {
             <div className='h-[10%] p-[1%]'>
                 <img src={logo} alt="PicaPool" />
             </div>
-            <div className='flex overflow-hidden'>
-                <div className='w-[50%] flex justify-end'>
-                    <img src={loginImg} alt="Login" className='w-[70%] mr-[20%]' />
-                </div>
-                <div className='flex flex-col justify-center align-middle w-[50%]'>
+            <div className='flex overflow-hidden h-full space-x-4'>
+                <img src={loginImg} alt="Login" className='w-[50%] justify-center align-middle pl-[7%] pr-[5%]' />
+                <div className='flex flex-col justify-center align-middle w-full pr-[6%]'>
                     <PageContext.Provider value={{ page, setPage }}>
-                        <div>
                             {page === 1 && <Partner />}
                             {page === 2 && <StoreDetailsPage />}
                             {page === 3 && <PersonalDetailsPage />}
-                        </div>
                     </PageContext.Provider>
                 </div>
             </div>
