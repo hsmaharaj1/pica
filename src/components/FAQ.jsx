@@ -69,7 +69,7 @@ export default function FAQ() {
         </div>
         <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
           <DialogTrigger asChild>
-            <Button variant="default">Add FAQ's</Button>
+            <Button variant="default" className="bg-[#6E6CDF] hover:bg-[#6261C5]">Add FAQ's</Button>
           </DialogTrigger>
           <DialogContent>
             <DialogHeader>
@@ -96,7 +96,7 @@ export default function FAQ() {
                   rows={4}
                 />
               </div>
-              <Button className="w-full" onClick={handleAdd}>
+              <Button className="w-full bg-[#6E6CDF] hover:bg-[#6261C5]" onClick={handleAdd}>
                 {editingFaq ? 'Update FAQ' : 'Add FAQ\'s'}
               </Button>
             </div>
@@ -109,7 +109,7 @@ export default function FAQ() {
           <AccordionItem
             key={faq.id}
             value={`item-${faq.id}`}
-            className="border rounded-lg p-4"
+            className="border rounded-lg p-4 bg-white"
           >
             <div className="flex justify-between items-center">
               <AccordionTrigger className="hover:no-underline">
