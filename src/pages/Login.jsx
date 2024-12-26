@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -8,12 +9,13 @@ import loginImg from '../assets/login.svg';
 import logo from "../assets/logo.svg"
 
 const Login = () => {
+  const navigate = useNavigate();
   return (
     <div className='flex flex-col h-screen w-full'>
       <div className='h-[10%] p-[1%]'>
         <img src={logo} alt="PicaPool" />
       </div>
-      <div className='flex overflow-hidden'>
+      <div className='flex overflow-hidden font-poppins'>
         <div className='flex flex-col justify-center align-middle w-[50%]'>
           <div className="min-h-screen flex items-center justify-center">
             <div className="w-full max-w-md">
@@ -37,7 +39,7 @@ const Login = () => {
                     <label className="text-gray-700">One Time Password</label>
                     <Button
                       variant="link"
-                      className="text-purple-500 p-0 h-auto font-normal"
+                      className="text-[#6E6CDF] p-0 h-auto font-normal"
                     >
                       Resend OTP
                     </Button>
@@ -49,15 +51,18 @@ const Login = () => {
                   />
                 </div>
 
-                <Button className="w-full bg-purple-500 hover:bg-purple-600">
+                <Button className="w-full bg-[#6E6CDF] hover:bg-[#6261C5]">
                   Sign in
                 </Button>
 
-                <div className="flex items-center gap-4 w-[42%]">
-                  <Separator className="flex-grow" />
-                  <span className="text-gray-500 text-sm">OR</span>
-                  <Separator className="flex-grow" />
+                <div className="w-full flex flex-col items-center justify-center">
+                  <div className="flex items-center gap-4">
+                    <Separator className="flex-grow w-10" />
+                    <span className="text-gray-500 text-sm">OR</span>
+                    <Separator className="flex-grow w-10" />
+                  </div>
                 </div>
+
 
                 <Button
                   variant="outline"
@@ -75,7 +80,8 @@ const Login = () => {
                   Didn't have an Account?{' '}
                   <Button
                     variant="link"
-                    className="text-purple-500 p-0 h-auto font-normal"
+                    className="text-[#6E6CDF] p-0 h-auto font-semibold"
+                    onClick = {() => navigate('/signup')}
                   >
                     Sign-up
                   </Button>

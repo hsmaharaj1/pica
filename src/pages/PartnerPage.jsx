@@ -15,7 +15,7 @@ export default function PartnerPage() {
     const [page, setPage] = useState(1)
 
     return (
-        <div className='flex flex-col h-screen w-full'>
+        <div className='flex flex-col h-screen w-full font-poppins'>
             <div className='h-[10%] p-[1%]'>
                 <img src={logo} alt="PicaPool" />
             </div>

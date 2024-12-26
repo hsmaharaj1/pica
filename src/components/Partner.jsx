@@ -14,7 +14,7 @@ const Partner = () => {
 
   return (
     
-      <div className="w-full">
+      <div className="w-full font-poppins">
         <CardHeader className="space-y-3 text-center">
           <CardTitle className="text-3xl font-bold">Let's Partner Up</CardTitle>
           <p className="text-gray-500">Please create your account</p>
@@ -95,13 +95,13 @@ const Partner = () => {
             Continue
           </Button>
           
-          <div className="flex items-center gap-4 ml-[37%] w-[2rem]">
+          {/* <div className="flex items-center gap-4 ml-[37%] w-[2rem]">
             <Separator className='flex-shrink'/>
             <span className="text-gray-500 text-sm">OR</span>
             <Separator />
-          </div>
+          </div> */}
           
-          <p className="text-center text-gray-500">
+          {/* <p className="text-center text-gray-500">
             Didn't have an Account?{' '}
             <Button 
               variant="link" 
@@ -109,7 +109,7 @@ const Partner = () => {
             >
               Sign-up
             </Button>
-          </p>
+          </p> */}
         </CardContent>
       </div>
   );

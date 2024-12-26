@@ -18,7 +18,7 @@ function App() {
         
         {/* Protected routes */}
         <Route 
-          path="/dashboard" 
+          path="/signup" 
           element={
             isAuthenticated ? 
               <PartnerPage /> : 
@@ -27,7 +27,7 @@ function App() {
         />
         
         <Route 
-          path="/menu" 
+          path="/dashboard" 
           element={
             isAuthenticated ? 
               <MenuManagement /> : 
