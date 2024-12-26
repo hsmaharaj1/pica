@@ -5,6 +5,7 @@ import ProductMenu from '@/components/ProductMenu';
 import { Button } from '@/components/ui/button';
 import { LayoutDashboard, Package, MessageSquareText as MessageIcon, LogOut, BadgePercent, CircleUserRound } from 'lucide-react';
 import partnerLogo from "../assets/partnerlogo.svg"
+import { Label } from '@/components/ui/label';
 
 export default function MenuManagement() {
   const [activeSection, setActiveSection] = useState('product');
@@ -27,18 +28,16 @@ export default function MenuManagement() {
         <div className="flex-1 py-6 px-6">
           <p className="px-6 text-sm font-medium text-gray-500 mb-4">General</p>
           <nav className="space-y-1">
-            <Button
-              variant={activeSection === 'dashboard' ? 'secondary' : 'ghost'}
-              className="w-full justify-start gap-2 px-6 rounded-full"
-              onClick={() => setActiveSection('dashboard')}
-              disabled
+            <Label
+              className="flex items-center text-gray-500 w-full justify-start gap-2 px-6 pb-2 rounded-full "            
             >
               <LayoutDashboard className="w-5 h-5" />
               Dashboard
-            </Button>
+            </Label>
+
             <Button
               variant={activeSection === 'product' ? 'secondary' : 'ghost'}
-              className="w-full justify-start gap-2 px-6 rounded-full"
+              className="w-full justify-start gap-2 px-6 rounded-full text-gray-500"
               onClick={() => setActiveSection('product')}
               
             >
@@ -47,7 +46,7 @@ export default function MenuManagement() {
             </Button>
             <Button
               variant={activeSection === 'Offer' ? 'secondary' : 'ghost'}
-              className="w-full justify-start gap-2 px-6 rounded-full"
+              className="w-full justify-start gap-2 px-6 rounded-full text-gray-500"
               onClick={() => setActiveSection('Offer')}
               
             >
@@ -56,7 +55,7 @@ export default function MenuManagement() {
             </Button>
             <Button
               variant={activeSection === 'FAQ' ? 'secondary' : 'ghost'}
-              className="w-full justify-start gap-1 px-6 mb-3 rounded-full"
+              className="w-full justify-start gap-1 px-6 mb-3 rounded-full text-gray-500"
               onClick={() => setActiveSection('FAQ')}
             >
               <MessageIcon className="w-5 h-5" />

@@ -37,8 +37,8 @@ export default function FAQ() {
 
   const handleAdd = () => {
     if (editingFaq) {
-      setFaqs(faqs.map(faq => 
-        faq.id === editingFaq.id 
+      setFaqs(faqs.map(faq =>
+        faq.id === editingFaq.id
           ? { ...faq, question: newFaq.question, answer: newFaq.answer }
           : faq
       ));
@@ -61,10 +61,10 @@ export default function FAQ() {
   };
 
   return (
-    <div className="max-w-4xl mx-auto p-6">
+    <div className="max-w-4xl mx-auto p-6 font-poppins">
       <div className="flex justify-between items-center mb-6">
         <div>
-          <h1 className="text-4xl font-semibold text-gray-800 mb-2">Frequently Asked Question</h1>
+          <h1 className="text-4xl text-gray-600 mb-2 font-bold">Frequently Asked Question</h1>
           <p className="text-gray-500">Lorem ipsum dolor sit amet consectetur. Scelerisque.</p>
         </div>
         <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
@@ -104,40 +104,43 @@ export default function FAQ() {
         </Dialog>
       </div>
 
-      <Accordion type="single" collapsible className="space-y-4">
+      <Accordion type="single" collapsible className="space-y-4 font-poppins">
         {faqs.map((faq) => (
           <AccordionItem
             key={faq.id}
             value={`item-${faq.id}`}
             className="border rounded-lg p-4 bg-white"
           >
-            <div className="flex justify-between items-center">
-              <AccordionTrigger className="hover:no-underline">
-                <span className="text-lg font-medium">{faq.question}</span>
-              </AccordionTrigger>
-              <div className="flex gap-2">
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    handleEdit(faq);
-                  }}
-                >
-                  <Pencil className="h-4 w-4" />
-                </Button>
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    handleDeleteFAQ(faq.id);
-                  }}
-                >
-                  <Trash2 className="h-4 w-4" />
-                </Button>
+
+            <AccordionTrigger className="hover:no-underline">
+              <div className="flex justify-between items-center">
+
+                <div className="text-md font-medium mr-6 text-gray-700">{faq.question}</div>
+
+                <div className="flex gap-2">
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handleEdit(faq);
+                    }}
+                  >
+                    <Pencil className="h-4 w-4" />
+                  </Button>
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handleDeleteFAQ(faq.id);
+                    }}
+                  >
+                    <Trash2 className="h-4 w-4" />
+                  </Button>
+                </div>
               </div>
-            </div>
+            </AccordionTrigger>
             <AccordionContent className="text-gray-600 pt-4">
               {faq.answer}
             </AccordionContent>
