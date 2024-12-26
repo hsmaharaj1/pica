@@ -84,7 +84,7 @@ const StoreDetailsPage = () => {
               />
               <Button 
                 variant="secondary"
-                className="bg-purple-500 hover:bg-purple-600"
+                className="bg-[#6E6CDF] hover:bg-[#6261C5]"
               >
                 <MapPin className="text-white" size={20} />
               </Button>
@@ -95,7 +95,7 @@ const StoreDetailsPage = () => {
             <label className="text-gray-700">Upload Image</label>
             <div
               className={`border-2 border-dashed rounded-lg p-6 text-center cursor-pointer
-                ${dragActive ? 'border-purple-500 bg-purple-50' : 'border-gray-300'}
+                ${dragActive ? 'border-[#6E6CDF] bg-purple-50' : 'border-gray-300'}
                 ${uploadedImage ? 'bg-green-50' : ''}`}
               onDragEnter={handleDrag}
               onDragLeave={handleDrag}
@@ -111,7 +111,7 @@ const StoreDetailsPage = () => {
               />
               <label htmlFor="file-upload" className="cursor-pointer">
                 <Upload className="mx-auto h-8 w-8 text-gray-400 " />
-                <span className="text-purple-500 hover:text-purple-600 text-xs">Click to upload</span>
+                <span className="text-[#6E6CDF] hover:text-[#6261C5] text-xs">Click to upload</span>
                 <span className="text-gray-500 text-xs"> or drag and drop</span>
                 <p className=" text-gray-500 mt-1 text-xs">JPG, JPEG, PNG less than 1MB</p>
                 {uploadedImage && (
@@ -121,7 +121,7 @@ const StoreDetailsPage = () => {
             </div>
           </div>
           
-          <Button onClick={()=>setPage(3)} className="w-full bg-purple-500 hover:bg-purple-600">
+          <Button onClick={()=>setPage(3)} className="w-full bg-[#6E6CDF] hover:bg-[#6261C5]">
             Continue
           </Button>
         </CardContent>

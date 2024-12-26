@@ -91,7 +91,7 @@ const Partner = () => {
             </div>
           </div>
           
-          <Button className="w-full bg-purple-500 hover:bg-purple-600" onClick={()=> setPage(2)}>
+          <Button className="w-full bg-[#6E6CDF] hover:bg-[#6261C5]" onClick={()=> setPage(2)}>
             Continue
           </Button>
           
@@ -105,7 +105,7 @@ const Partner = () => {
             Didn't have an Account?{' '}
             <Button 
               variant="link" 
-              className="text-purple-500 p-0 h-auto font-normal"
+              className="text-[#6E6CDF] p-0 h-auto font-normal"
             >
               Sign-up
             </Button>

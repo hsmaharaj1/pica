@@ -65,7 +65,7 @@ const Offers = () => {
           <div
             key={index}
             className={`border-2 ${
-              dragging[index] ? "border-blue-600 bg-blue-50" : "border-gray-300"
+              dragging[index] ? "border-[#6E6CDF] bg-blue-50" : "border-gray-300"
             } border-dashed rounded-lg p-8 flex-1 flex items-center justify-center relative`}
             onDragOver={(event) => handleDragOver(index, event)}
             onDragLeave={() => handleDragLeave(index)}
@@ -80,7 +80,7 @@ const Offers = () => {
             ) : (
               <div className="text-center">
                 <Upload className="mx-auto mb-2" size={24} />
-                <span className="text-blue-600">Drag & Drop or Upload 1:4</span>
+                <span className="text-[#6E6CDF]">Drag & Drop or Upload 1:4</span>
                 <input
                   type="file"
                   accept="image/jpeg, image/png"
@@ -108,7 +108,7 @@ const Offers = () => {
         </button>
         <button
           onClick={() => setCurrentStep(2)}
-          className="px-4 py-2 text-white bg-blue-600 rounded-lg"
+          className="px-4 py-2 text-white bg-[#6E6CDF] hover:bg-[#6261C5] rounded-lg"
         >
           Next
         </button>
@@ -134,7 +134,7 @@ const Offers = () => {
   //       ))}
   //     </div>
 
-  //     <button className="w-full py-2 mb-6 text-white bg-blue-600 rounded-lg">
+  //     <button className="w-full py-2 mb-6 text-white bg-[#6E6CDF] rounded-lg">
   //       Add Products +
   //     </button>
 
@@ -147,7 +147,7 @@ const Offers = () => {
   //       </button>
   //       <button 
   //         onClick={() => setCurrentStep(3)}
-  //         className="px-4 py-2 text-white bg-blue-600 rounded-lg"
+  //         className="px-4 py-2 text-white bg-[#6E6CDF] rounded-lg"
   //       >
   //         Next
   //       </button>
@@ -205,7 +205,7 @@ const Offers = () => {
         </div>
   
         {/* Add Products Button */}
-        <button className="w-full py-2 mb-6 text-white bg-blue-600 rounded-lg">
+        <button className="w-full py-2 mb-6 text-white bg-[#6E6CDF] hover:bg-[#6261C5] rounded-lg">
           Add Products +
         </button>
   
@@ -219,7 +219,7 @@ const Offers = () => {
                   key={product.id}
                   variant="outline"
                   onClick={() => toggleProductSelection(product)}
-                  className="flex items-center justify-between w-full p-4 bg-indigo-100 border-indigo-500 rounded-lg"
+                  className="flex items-center justify-between w-full p-4 bg-indigo-100 border-[#6E6CDF] rounded-lg"
                 >
                   <div className="flex items-center gap-3">
                     <span>{product.name}</span>
@@ -241,7 +241,7 @@ const Offers = () => {
           </button>
           <button
             onClick={() => setCurrentStep(3)}
-            className="px-4 py-2 text-white bg-blue-600 rounded-lg"
+            className="px-4 py-2 text-white bg-[#6E6CDF] hover:bg-[#6261C5] rounded-lg"
           >
             Next
           </button>
@@ -294,7 +294,7 @@ const Offers = () => {
         >
           Previous
         </button>
-        <button className="px-4 py-2 text-white bg-blue-600 rounded-lg">
+        <button className="px-4 py-2 text-white bg-[#6E6CDF] rounded-lg">
           Add
         </button>
       </div>
