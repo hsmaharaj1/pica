@@ -8,6 +8,8 @@ import google from '../assets/google.svg';
 import loginImg from '../assets/login.svg';
 import logo from "../assets/logo.svg"
 import { useState, useEffect } from 'react';
+import apiCall from '@/apiCalls';
+
 
 const Login = () => {
   const navigate = useNavigate();
@@ -15,6 +17,7 @@ const Login = () => {
   const [showOtpButton, setShowOtpButton] = useState(false);
   const [timer, setTimer] = useState(30);
   const [isTimerActive, setIsTimerActive] = useState(false);
+  const [otp, setOtp] = useState('');
 
   useEffect(() => {
     let interval;
@@ -35,8 +38,16 @@ const Login = () => {
     setShowOtpButton(value.length > 0);
   };
 
-  const handleSendOtp = () => {
-    // Add your OTP sending logic here
+  const handleSendOtp = async () => {
+    const endpoint = `https://api.picapool.com/v2/otp?mobile=${phoneNumber}`;
+    try {
+      const result = await apiCall("post", endpoint);
+      console.log("OTP Sent Successfully:", result);
+    } catch (error) {
+      console.error("Failed to Send OTP. Details:");
+      console.error("Error Response Data:", error.response?.data);
+      console.error("Error Message:", error.message);
+    }
     setIsTimerActive(true);
   };
 
@@ -45,6 +56,25 @@ const Login = () => {
     if (!isTimerActive) return 'Send OTP';
     if (timer > 0) return `Resend in ${timer}s`;
     return 'Resend OTP';
+  };
+
+  const handleLogin = async () => {
+    const endpoint = "https://api.picapool.com/v2/auth/login/Partner";
+    const phoneNumber1 = phoneNumber
+    const otp1 = otp
+    try {
+      const result = await apiCall("post", endpoint, {
+        msgOTP: {
+          mobile: phoneNumber1,
+          otp: otp1,
+        },
+      });
+      console.log("Login Successful:", result);
+    } catch (error) {
+      console.error("Login Failed. Details:");
+      console.error("Error Response Data:", error.response?.data);
+      console.error("Error Message:", error.message);
+    }
   };
 
   return (
@@ -89,9 +119,14 @@ const Login = () => {
                     type="text"
                     placeholder="enter your OTP"
                     className="w-full"
+                    value={otp}
+                    onChange={(e) => setOtp(e.target.value)}
                   />
                 </div>
-                <Button className="w-full bg-[#6E6CDF] hover:bg-[#6261C5]">
+                <Button 
+                className="w-full bg-[#6E6CDF] hover:bg-[#6261C5]" 
+                onClick={() => handleLogin()}>
+
                   Sign in
                 </Button>
                 <div className="w-full flex flex-col items-center justify-center">
