@@ -11,6 +11,37 @@ const Partner = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const { setPage } = usePage();
+  const { data } = usePage();
+  const [ownerName, setOwnerName] = useState('');
+  const [ownerNumber, setOwnerNumber] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+
+  const handleOwnerNameChange = (e) => { setOwnerName(e.target.value); };
+  const handleOwnerNumberChange = (e) => { setOwnerNumber(e.target.value); };
+  const handleEmailChange = (e) => { setEmail(e.target.value); };
+  const handlePasswordChange = (e) => { setPassword(e.target.value); };
+  const handleConfirmPasswordChange = (e) => { setConfirmPassword(e.target.value); };
+
+  const handleContinue = () => {
+    if (!ownerName || !ownerNumber || !email || !password || !confirmPassword) {
+      alert("All fields are required.");
+      return;
+    }
+    if (password !== confirmPassword) {
+      alert("Password and Confirm Password do not match.");
+      setPassword('');
+      setConfirmPassword('');
+      return;
+    }
+    data.ownername = ownerName;
+    data.phone = ownerNumber;
+    data.email = email;
+    data.password = password;
+    console.log(data);
+    setPage(2);
+  };
 
   return (
     
@@ -33,6 +64,8 @@ const Partner = () => {
                 type="text"
                 placeholder="enter owner's name"
                 className="w-full"
+                value={ownerName}
+                onChange={handleOwnerNameChange}
               />
             </div>
             
@@ -42,6 +75,8 @@ const Partner = () => {
                 type="tel"
                 placeholder="enter owner's number"
                 className="w-full"
+                value={ownerNumber}
+                onChange={handleOwnerNumberChange}
               />
             </div>
           </div>
@@ -52,6 +87,8 @@ const Partner = () => {
               type="email"
               placeholder="admin@gmail.com"
               className="w-full"
+              value={email}
+              onChange={handleEmailChange}
             />
           </div>
           
@@ -62,6 +99,8 @@ const Partner = () => {
                 type={showPassword ? "text" : "password"}
                 placeholder="enter your password"
                 className="w-full pr-10"
+                value={password}
+                onChange={handlePasswordChange}
               />
               <button
                 type="button"
@@ -80,6 +119,8 @@ const Partner = () => {
                 type={showConfirmPassword ? "text" : "password"}
                 placeholder="confirm your password"
                 className="w-full pr-10"
+                value={confirmPassword}
+                onChange={handleConfirmPasswordChange}
               />
               <button
                 type="button"
@@ -91,25 +132,9 @@ const Partner = () => {
             </div>
           </div>
           
-          <Button className="w-full bg-[#6E6CDF] hover:bg-[#6261C5]" onClick={()=> setPage(2)}>
+          <Button className="w-full bg-[#6E6CDF] hover:bg-[#6261C5]" onClick={handleContinue}>
             Continue
           </Button>
-          
-          {/* <div className="flex items-center gap-4 ml-[37%] w-[2rem]">
-            <Separator className='flex-shrink'/>
-            <span className="text-gray-500 text-sm">OR</span>
-            <Separator />
-          </div> */}
-          
-          {/* <p className="text-center text-gray-500">
-            Didn't have an Account?{' '}
-            <Button 
-              variant="link" 
-              className="text-[#6E6CDF] p-0 h-auto font-normal"
-            >
-              Sign-up
-            </Button>
-          </p> */}
         </CardContent>
       </div>
   );
