@@ -17,6 +17,7 @@ const StoreDetailsPage = () => {
   const [address, setAddress] = useState('');
   const [storeName, setStoreName] = useState('');
   const [aboutStore, setAboutStore] = useState('');
+  const { data } = usePage();
 
   const handleDrag = useCallback((e) => {
     e.preventDefault();
@@ -67,6 +68,19 @@ const StoreDetailsPage = () => {
   const handleStoreNameChange = (e) => { setStoreName(e.target.value); };
   const handleAboutStoreChange = (e) => { setAboutStore(e.target.value); };
   const handleAddressChange = (e) => { setAddress(e.target.value); };
+
+  const handleContinue = () => { 
+    if (!storeName || !aboutStore || !address) {
+      alert("All fields are required.");
+      return;
+    }
+    data.username = storeName;
+    data.link = aboutStore;
+    data.location = {lat: location.latitude, lng: location.longitude};
+    data.pic = uploadedImage;
+    console.log(data);
+    setPage(3);
+  };
 
   return (
     <div className="min-h-screen flex items-center justify-center">
@@ -156,7 +170,7 @@ const StoreDetailsPage = () => {
             </div>
           </div>
           
-          <Button onClick={()=>console.log(uploadedImage)} className="w-full bg-[#6E6CDF] hover:bg-[#6261C5]">
+          <Button onClick={()=>{handleContinue()}} className="w-full bg-[#6E6CDF] hover:bg-[#6261C5]">
             Continue
           </Button>
         </CardContent>
