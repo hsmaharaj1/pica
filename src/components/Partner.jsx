@@ -7,10 +7,11 @@ import progressIndicator from '@/assets/progressIndicator1.svg';
 
 const Partner = () => {
   const { setPage } = usePage();
-  const { data } = usePage();
+  const { data, setData } = usePage();
   const [ownerName, setOwnerName] = useState('');
   const [ownerNumber, setOwnerNumber] = useState('');
   const [email, setEmail] = useState('');
+  const data2 = data;
 
   const handleOwnerNameChange = (e) => { setOwnerName(e.target.value); };
   const handleOwnerNumberChange = (e) => { setOwnerNumber(e.target.value); };
@@ -21,9 +22,10 @@ const Partner = () => {
       alert("All fields are required.");
       return;
     }
-    data.ownername = ownerName;
-    data.phone = ownerNumber;
-    data.email = email;
+    data2.ownername = ownerName;
+    data2.phone = ownerNumber;
+    data2.email = email;
+    setData(data2);
     console.log(data);
     setPage(2);
   };

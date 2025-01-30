@@ -12,8 +12,8 @@ export function usePage() {
 }
 
 export default function PartnerPage() {
-    const [page, setPage] = useState(2);
-    const data = {
+    const [page, setPage] = useState(1);
+    const [data, setData] = useState({
         username: "John's Store",
         ownername: "John Doe",
         pic: "https://example.com/vendor-pic.jpg",
@@ -26,8 +26,8 @@ export default function PartnerPage() {
           lng: 77.594566
         },
         authId: 1
-      }
-
+      });
+    console.log(data);
     return (
         <div className='flex flex-col h-screen w-full font-poppins'>
             <div className='h-[10%] p-[1%]'>
@@ -36,7 +36,7 @@ export default function PartnerPage() {
             <div className='flex overflow-hidden h-full space-x-4'>
                 <img src={loginImg} alt="Login" className='w-[50%] justify-center align-middle pl-[7%] pr-[5%]' />
                 <div className='flex flex-col justify-center align-middle w-full pr-[6%]'>
-                    <PageContext.Provider value={{ page, setPage, data }}>
+                    <PageContext.Provider value={{ page, setPage, data, setData }}>
                             {page === 1 && <Partner />}
                             {page === 2 && <StoreDetailsPage />}
                             {page === 3 && <PersonalDetailsPage />}

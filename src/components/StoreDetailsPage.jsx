@@ -17,7 +17,8 @@ const StoreDetailsPage = () => {
   const [address, setAddress] = useState('');
   const [storeName, setStoreName] = useState('');
   const [aboutStore, setAboutStore] = useState('');
-  const { data } = usePage();
+  const { data, setData } = usePage();
+  const data2 = data;
 
   const handleDrag = useCallback((e) => {
     e.preventDefault();
@@ -74,10 +75,11 @@ const StoreDetailsPage = () => {
       alert("All fields are required.");
       return;
     }
-    data.username = storeName;
-    data.link = aboutStore;
-    data.location = {lat: location.latitude, lng: location.longitude};
-    data.pic = uploadedImage;
+    data2.username = storeName;
+    data2.link = aboutStore;
+    data2.location = {lat: location.latitude, lng: location.longitude};
+    data2.pic = uploadedImage;
+    setData(data2);
     console.log(data);
     setPage(3);
   };

@@ -10,7 +10,13 @@ import progressIndicator from '@/assets/progressIndicator3.svg';
 const PersonalDetailsPage = () => {
   const [dragActive, setDragActive] = useState(false);
   const [uploadedImage, setUploadedImage] = useState(null);
+  const [panCard, setPanCard] = useState('');
+  const [gstin, setGstin] = useState('');
+  const [bankAccount, setBankAccount] = useState('');
+  const [delivery, setDelivery] = useState('');
   const { setPage } = usePage();
+  const { data, setData } = usePage();
+  const data2 = data;
 
   const handleDrag = useCallback((e) => {
     e.preventDefault();
@@ -26,7 +32,7 @@ const PersonalDetailsPage = () => {
     e.preventDefault();
     e.stopPropagation();
     setDragActive(false);
-    
+
     const file = e.dataTransfer.files?.[0];
     if (file && file.size <= 1024 * 1024) { // 1MB limit
       setUploadedImage(file);
@@ -40,53 +46,80 @@ const PersonalDetailsPage = () => {
     }
   };
 
+  const handlePanCardChange = (e) => { setPanCard(e.target.value); };
+  const handleGstinChange = (e) => { setGstin(e.target.value); };
+  const handleBankAccountChange = (e) => { setBankAccount(e.target.value); };
+  const handleDeliveryChange = (value) => { setDelivery(value); };
+
+  const handleSignup = () => {
+    console.log(delivery);
+    console.log(panCard);
+    console.log(gstin);
+    console.log(bankAccount);
+    console.log(uploadedImage);
+    if (!panCard || !gstin || !bankAccount || !delivery) {
+      alert("All fields are required.");
+      return;
+    }
+    data2.delivery = delivery === 'yes';
+    setData(data2);
+    console.log(data);
+    return;
+  }
+
+
   return (
     <div className="min-h-screen flex items-center justify-center">
       <div className="w-full">
         <CardHeader className="space-y-2 text-center">
           <CardTitle className="text-3xl font-bold">Let's Partner Up</CardTitle>
           <p className="text-gray-500">Please enter your personal details</p>
-          
+
           {/* Progress Indicator */}
           <div className="flex justify-center items-center gap-2 mt-4">
             <img src={progressIndicator} alt="progress" />
           </div>
         </CardHeader>
-        
+
         <CardContent className="space-y-4">
           <div className="grid grid-cols-2 gap-4">
             <div className="space-y-2">
               <label className="text-gray-700">GSTIN</label>
-              <Input 
+              <Input
                 type="text"
                 placeholder="enter your GSTIN"
                 className="w-full"
+                value={gstin}
+                onChange={handleGstinChange}
               />
             </div>
-            
+
             <div className="space-y-2">
               <label className="text-gray-700">PAN Card</label>
-              <Input 
+              <Input
                 type="text"
                 placeholder="enter your pan number"
                 className="w-full"
+                value={panCard}
+                onChange={handlePanCardChange}
               />
             </div>
           </div>
-          
+
           <div className="grid grid-cols-2 gap-4">
             <div className="space-y-2">
               <label className="text-gray-700">Bank Account Details</label>
-              <Input 
+              <Input
                 type="text"
                 placeholder="enter your Acc No"
                 className="w-full"
+                value={bankAccount}
+                onChange={handleBankAccountChange}
               />
             </div>
-            
             <div className="space-y-2">
               <label className="text-gray-700">Delivery Services</label>
-              <Select>
+              <Select value={delivery} onValueChange={handleDeliveryChange}>
                 <SelectTrigger className="w-full">
                   <SelectValue placeholder="Do you offer delivery?" />
                 </SelectTrigger>
@@ -97,7 +130,7 @@ const PersonalDetailsPage = () => {
               </Select>
             </div>
           </div>
-          
+
           <div className="space-y-2">
             <label className="text-gray-700">Pan Card Image</label>
             <div
@@ -127,10 +160,10 @@ const PersonalDetailsPage = () => {
               </label>
             </div>
           </div>
-          
-          <Button 
+
+          <Button
             className="w-full bg-[#6E6CDF] hover:bg-[#6261C5]"
-            onClick={() => setPage(4)}
+            onClick={() => handleSignup()}
           >
             Sign up
           </Button>
