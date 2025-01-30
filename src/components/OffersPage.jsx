@@ -69,83 +69,6 @@ export default function OffersPage() {
   const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
   const currentProducts = products.slice(indexOfFirstProduct, indexOfLastProduct);
 
-  // Image handling functions
-  const handleImageUpload = (e, isEdit = false) => {
-    const file = e.target.files[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        if (isEdit) {
-          setEditingProduct({
-            ...editingProduct,
-            image: reader.result,
-            imagePreview: reader.result
-          });
-        } else {
-          setNewProduct({
-            ...newProduct,
-            image: file,
-            imagePreview: reader.result
-          });
-        }
-      };
-      reader.readAsDataURL(file);
-    }
-  };
-
-  const handleDragOver = (e) => {
-    e.preventDefault();
-    e.stopPropagation();
-  };
-
-  const handleDrop = (e, isEdit = false) => {
-    e.preventDefault();
-    e.stopPropagation();
-    const file = e.dataTransfer.files[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        if (isEdit) {
-          setEditingProduct({
-            ...editingProduct,
-            image: reader.result,
-            imagePreview: reader.result
-          });
-        } else {
-          setNewProduct({
-            ...newProduct,
-            image: file,
-            imagePreview: reader.result
-          });
-        }
-      };
-      reader.readAsDataURL(file);
-    }
-  };
-
-  // Product management functions
-  const handleAddProduct = (e) => {
-    e.preventDefault();
-    const productId = products.length + 1;
-    setProducts([...products, {
-      id: productId,
-      image: newProduct.imagePreview || "/api/placeholder/40/40",
-      ...newProduct
-    }]);
-    setIsAddProductOpen(false);
-    setNewProduct({
-      name: '',
-      category: '',
-      offerType: '',
-      stock: '',
-      price: '',
-      description: '',
-      orignalPrice: 'Active',
-      image: null,
-      imagePreview: null
-    });
-  };
-
   const handleDelete = (productId) => {
     setProducts(products.filter(product => product.id !== productId));
   };
@@ -409,9 +332,7 @@ export default function OffersPage() {
 
             <TableRow>
               <TableHead>Product</TableHead>
-              <TableHead>Category</TableHead>
               <TableHead>Offer</TableHead>
-              <TableHead>Stock</TableHead>
               <TableHead>Orignal Price</TableHead>
               <TableHead>Offer Price</TableHead>
               <TableHead>Action</TableHead>
@@ -430,11 +351,7 @@ export default function OffersPage() {
                   />
                   <span>{product.name}</span>
                 </TableCell>
-                <TableCell>
-                  <Badge variant="secondary" className="h-[2rem] rounded-md">{product.category}</Badge>
-                </TableCell>
                 <TableCell>{product.offerType}</TableCell>
-                <TableCell>{product.stock}</TableCell>
 
                 <TableCell>
                   ${product.orignalPrice}

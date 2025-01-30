@@ -26,10 +26,8 @@ export default function ProductMenu() {
     id: 1,
     image: "https://fastly.picsum.photos/id/48/5000/3333.jpg?hmac=y3_1VDNbhii0vM_FN6wxMlvK27vFefflbUSH06z98so",
     name: "Product Name",
-    category: "Lorem",
-    offerType: "ipsum",
-    stock: "899",
-    status: "Active",
+    offerPrice: "1000",
+    status: "No Offer",
     price: "1500",
     description: ""
   },
@@ -37,9 +35,7 @@ export default function ProductMenu() {
     id: 2,
     image: "https://fastly.picsum.photos/id/48/5000/3333.jpg?hmac=y3_1VDNbhii0vM_FN6wxMlvK27vFefflbUSH06z98so",
     name: "Product Name",
-    category: "Lorem",
-    offerType: "ipsum",
-    stock: "899",
+    offerPrice: "1000",
     status: "Deactivated",
     price: "1500",
     description: ""
@@ -50,12 +46,10 @@ export default function ProductMenu() {
   const [editingProduct, setEditingProduct] = useState(null);
   const [newProduct, setNewProduct] = useState({
     name: '',
-    category: '',
-    offerType: '',
-    stock: '',
+    offerPrice: '',
     price: '',
     description: '',
-    status: 'Active',
+    status: 'No Offer',
     image: null,
     imagePreview: null
   });
@@ -134,11 +128,11 @@ export default function ProductMenu() {
     setNewProduct({
       name: '',
       category: '',
-      offerType: '',
+      offerPrice: '',
       stock: '',
       price: '',
       description: '',
-      status: 'Active',
+      status: 'No Offer',
       image: null,
       imagePreview: null
     });
@@ -238,60 +232,22 @@ export default function ProductMenu() {
             />
           </div>
 
-          <div className="space-y-2">
-            <Label htmlFor="edit-category">Category</Label>
-            <Select
-              value={editingProduct?.category || ''}
-              onValueChange={(value) => setEditingProduct({
-                ...editingProduct,
-                category: value
-              })}
-            >
-              <SelectTrigger>
-                <SelectValue placeholder="Select category" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="category1">Category 1</SelectItem>
-                <SelectItem value="category2">Category 2</SelectItem>
-                <SelectItem value="category3">Category 3</SelectItem>
-              </SelectContent>
-            </Select>
-          </div>
 
           <div className="space-y-2">
-            <Label htmlFor="edit-offerType">Offer Type</Label>
-            <Select
-              value={editingProduct?.offerType || ''}
-              onValueChange={(value) => setEditingProduct({
-                ...editingProduct,
-                offerType: value
-              })}
-            >
-              <SelectTrigger>
-                <SelectValue placeholder="Select offer type" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="type1">Type 1</SelectItem>
-                <SelectItem value="type2">Type 2</SelectItem>
-                <SelectItem value="type3">Type 3</SelectItem>
-              </SelectContent>
-            </Select>
-          </div>
-
-          <div className="space-y-2">
-            <Label htmlFor="edit-stock">Stock</Label>
+            <Label htmlFor="edit-offerPrice">Offer Price</Label>
             <Input
-              id="edit-stock"
+              id="edit-price"
               type="number"
-              value={editingProduct?.stock || ''}
+              value={editingProduct?.offerPrice || ''}
               onChange={(e) => setEditingProduct({
                 ...editingProduct,
-                stock: e.target.value
+                offerPrice: e.target.value
               })}
-              placeholder="Enter stock quantity"
+              placeholder="Enter price"
               required
             />
           </div>
+
 
           <div className="space-y-2">
             <Label htmlFor="edit-price">Price</Label>
@@ -337,6 +293,7 @@ export default function ProductMenu() {
               <SelectContent>
                 <SelectItem value="Active">Active</SelectItem>
                 <SelectItem value="Deactivated">Deactivated</SelectItem>
+                <SelectItem value="Active">No Offer</SelectItem>
               </SelectContent>
             </Select>
           </div>
@@ -363,7 +320,7 @@ export default function ProductMenu() {
               setNewProduct({
                 name: '',
                 category: '',
-                offerType: '',
+                offerPrice: '',
                 stock: '',
                 price: '',
                 description: '',
@@ -429,60 +386,22 @@ export default function ProductMenu() {
             />
           </div>
 
-          <div className="space-y-2">
-            <Label htmlFor="category">Category</Label>
-            <Select
-              value={newProduct.category}
-              onValueChange={(value) => setNewProduct({
-                ...newProduct,
-                category: value
-              })}
-            >
-              <SelectTrigger>
-                <SelectValue placeholder="Select category" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="category1">Category 1</SelectItem>
-                <SelectItem value="category2">Category 2</SelectItem>
-                <SelectItem value="category3">Category 3</SelectItem>
-              </SelectContent>
-            </Select>
-          </div>
 
           <div className="space-y-2">
-            <Label htmlFor="offerType">Offer Type</Label>
-            <Select
-              value={newProduct.offerType}
-              onValueChange={(value) => setNewProduct({
-                ...newProduct,
-                offerType: value
-              })}
-            >
-              <SelectTrigger>
-                <SelectValue placeholder="Select offer type" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="type1">Type 1</SelectItem>
-                <SelectItem value="type2">Type 2</SelectItem>
-                <SelectItem value="type3">Type 3</SelectItem>
-              </SelectContent>
-            </Select>
-          </div>
-
-          <div className="space-y-2">
-            <Label htmlFor="stock">Stock</Label>
+            <Label htmlFor="offerPrice">Offer Price</Label>
             <Input
               id="stock"
               type="number"
-              value={newProduct.stock}
+              value={newProduct.offerPrice}
               onChange={(e) => setNewProduct({
                 ...newProduct,
-                stock: e.target.value
+                offerPrice: e.target.value
               })}
               placeholder="Enter stock quantity"
               required
             />
           </div>
+
 
           <div className="space-y-2">
             <Label htmlFor="price">Price</Label>
@@ -528,6 +447,7 @@ export default function ProductMenu() {
               <SelectContent>
                 <SelectItem value="Active">Active</SelectItem>
                 <SelectItem value="Deactivated">Deactivated</SelectItem>
+                <SelectItem value="Active">No Offer</SelectItem>
               </SelectContent>
             </Select>
           </div>
@@ -558,9 +478,8 @@ export default function ProductMenu() {
 
             <TableRow>
               <TableHead>Product</TableHead>
-              <TableHead>Category</TableHead>
-              <TableHead>Offer Type</TableHead>
-              <TableHead>Stock</TableHead>
+              <TableHead>Offer Price</TableHead>
+              <TableHead>ID</TableHead>
               <TableHead>Status</TableHead>
               <TableHead>Price</TableHead>
               <TableHead>Action</TableHead>
@@ -579,16 +498,13 @@ export default function ProductMenu() {
                   />
                   <span>{product.name}</span>
                 </TableCell>
-                <TableCell>
-                  <Badge variant="secondary" className="h-[2rem] rounded-md">{product.category}</Badge>
-                </TableCell>
-                <TableCell>{product.offerType}</TableCell>
-                <TableCell>{product.stock}</TableCell>
+                <TableCell>${product.offerPrice}</TableCell>
+                <TableCell>{product.id}</TableCell>
 
                 <TableCell>
                   {product.status == "Active" ?
                     <Badge variant="secondary" className="bg-[#E6F7D9] text-[#56CA00] text-[0.9rem] rounded-md">Active</Badge>
-                    :
+                    : product.status == "No Offer" ? <Badge variant="secondary" className="bg-[#F5F5F5] text-[#757575] text-[0.9rem] rounded-md">No Offer</Badge> :
                     <Badge variant="secondary" className="bg-[#FFE4E5] text-[#FF4C51] text-[0.9rem] rounded-md">Deactivated</Badge>
                   }
 
