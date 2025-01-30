@@ -6,6 +6,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Upload } from "lucide-react";
 import { usePage } from '@/pages/PartnerPage';
 import progressIndicator from '@/assets/progressIndicator3.svg';
+import apiCall from '@/apiCalls';
 
 const PersonalDetailsPage = () => {
   const [dragActive, setDragActive] = useState(false);
@@ -51,19 +52,23 @@ const PersonalDetailsPage = () => {
   const handleBankAccountChange = (e) => { setBankAccount(e.target.value); };
   const handleDeliveryChange = (value) => { setDelivery(value); };
 
-  const handleSignup = () => {
-    console.log(delivery);
-    console.log(panCard);
-    console.log(gstin);
-    console.log(bankAccount);
-    console.log(uploadedImage);
+  const handleSignup = async () => {
     if (!panCard || !gstin || !bankAccount || !delivery) {
       alert("All fields are required.");
       return;
     }
     data2.delivery = delivery === 'yes';
     setData(data2);
-    console.log(data);
+    try{
+      const url = 'https://api.picapool.com//v2/partner'
+      const response = await apiCall('POST', url, data);
+      console.log(response);
+    } catch (error) {
+      console.error("Failed to Sign Up. Details:");
+      console.error("Error Response Data:", error.response?.data);
+      console.error("Error Message:", error.message);
+      return;
+    }
     return;
   }
 

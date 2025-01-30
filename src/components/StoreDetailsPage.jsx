@@ -80,7 +80,6 @@ const StoreDetailsPage = () => {
     data2.location = {lat: location.latitude, lng: location.longitude};
     data2.pic = uploadedImage;
     setData(data2);
-    console.log(data);
     setPage(3);
   };
 

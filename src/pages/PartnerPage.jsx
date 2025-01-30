@@ -27,7 +27,6 @@ export default function PartnerPage() {
         },
         authId: 1
       });
-    console.log(data);
     return (
         <div className='flex flex-col h-screen w-full font-poppins'>
             <div className='h-[10%] p-[1%]'>

@@ -26,7 +26,6 @@ const Partner = () => {
     data2.phone = ownerNumber;
     data2.email = email;
     setData(data2);
-    console.log(data);
     setPage(2);
   };
 
