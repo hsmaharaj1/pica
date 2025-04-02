@@ -6,11 +6,19 @@ import { Textarea } from "@/components/ui/textarea";
 import { MapPin, Upload } from "lucide-react";
 import { usePage } from '@/pages/PartnerPage';
 import progressIndicator from '@/assets/progressIndicator2.svg';
+import { set } from 'react-hook-form';
 
 const StoreDetailsPage = () => {
   const [dragActive, setDragActive] = useState(false);
   const [uploadedImage, setUploadedImage] = useState(null);
   const { setPage } = usePage();
+  const [location, setLocation] = useState(null);
+  const [error, setError] = useState(null);
+  const [address, setAddress] = useState('');
+  const [storeName, setStoreName] = useState('');
+  const [aboutStore, setAboutStore] = useState('');
+  const { data, setData } = usePage();
+  const data2 = data;
 
   const handleDrag = useCallback((e) => {
     e.preventDefault();
@@ -40,6 +48,41 @@ const StoreDetailsPage = () => {
     }
   };
 
+  const getLocation = () => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          const { latitude, longitude } = position.coords;
+          setLocation({ latitude, longitude });
+          setAddress('using your current location');
+          setError(null); // Clear previous errors, if any
+        },
+        (err) => {
+          setError(err.message);
+        }
+      );
+    } else {
+      setError("Geolocation is not supported by your browser.");
+    }
+  };
+
+  const handleStoreNameChange = (e) => { setStoreName(e.target.value); };
+  const handleAboutStoreChange = (e) => { setAboutStore(e.target.value); };
+  const handleAddressChange = (e) => { setAddress(e.target.value); };
+
+  const handleContinue = () => { 
+    if (!storeName || !aboutStore || !address) {
+      alert("All fields are required.");
+      return;
+    }
+    data2.username = storeName;
+    data2.link = aboutStore;
+    data2.location = {lat: location.latitude, lng: location.longitude};
+    data2.pic = uploadedImage;
+    setData(data2);
+    setPage(3);
+  };
+
   return (
     <div className="min-h-screen flex items-center justify-center">
       <div className="w-full">
@@ -61,6 +104,8 @@ const StoreDetailsPage = () => {
                 type="text"
                 placeholder="enter store name"
                 className="w-full"
+                value={storeName}
+                onChange={handleStoreNameChange}
               />
             </div>
             
@@ -70,6 +115,8 @@ const StoreDetailsPage = () => {
                 type="text" 
                 placeholder="enter store details"
                 className="w-full"
+                value={aboutStore}
+                onChange={handleAboutStoreChange}
               />
             </div>
           </div>
@@ -81,10 +128,13 @@ const StoreDetailsPage = () => {
                 type="text"
                 placeholder="enter your address"
                 className="w-full"
+                value={address}
+                onChange={handleAddressChange}
               />
               <Button 
                 variant="secondary"
                 className="bg-[#6E6CDF] hover:bg-[#6261C5]"
+                onClick={() => getLocation()}
               >
                 <MapPin className="text-white" size={20} />
               </Button>
@@ -121,7 +171,7 @@ const StoreDetailsPage = () => {
             </div>
           </div>
           
-          <Button onClick={()=>setPage(3)} className="w-full bg-[#6E6CDF] hover:bg-[#6261C5]">
+          <Button onClick={()=>{handleContinue()}} className="w-full bg-[#6E6CDF] hover:bg-[#6261C5]">
             Continue
           </Button>
         </CardContent>

@@ -62,6 +62,16 @@ const Login = () => {
     const endpoint = "https://api.picapool.com/v2/auth/login/Partner";
     const phoneNumber1 = phoneNumber
     const otp1 = otp
+    try{
+      const endpoint2 = `https://api.picapool.com/v2/otp/verify?mobile=${phoneNumber1}&otp=${otp1}`;
+      const result2 = await apiCall("get", endpoint2);
+      if(!result2.success) return console.log("OTP Verification Failed:", result2);
+    } catch (error) {
+      console.error("OTP Verification Failed. Details:");
+      console.error("Error Response Data:", error.response?.data);
+      console.error("Error Message:", error.message);
+      return;
+    }
     try {
       const result = await apiCall("post", endpoint, {
         msgOTP: {
