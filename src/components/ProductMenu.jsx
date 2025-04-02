@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Button } from './ui/button';
 import {
   Table,
@@ -20,6 +20,9 @@ import { Input } from './ui/input';
 import { Textarea } from "@/components/ui/textarea";
 import { PenIcon, Trash2Icon, X as CloseIcon, Upload } from 'lucide-react';
 import { Badge } from './ui/badge';
+import axios from 'axios';
+
+const product_url = "https://api.picapool.com/v2/product"
 
 export default function ProductMenu() {
   const [products, setProducts] = useState([{
@@ -44,6 +47,24 @@ export default function ProductMenu() {
     price: "1500",
     description: ""
   }]);
+
+  // Fetch products from API
+  // We'll relook into this later
+  const [fetchedProducts, setFetchedProducts] = useState([]);
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const response = await axios.get(product_url);
+        setFetchedProducts(response.data);
+      } catch (error) {
+        console.error('Error fetching products:', error);
+        // Optionally add error state handling here
+      }
+    };
+
+    fetchProducts();
+  }, []);
 
   const [isAddProductOpen, setIsAddProductOpen] = useState(false);
   const [isEditProductOpen, setIsEditProductOpen] = useState(false);
@@ -158,12 +179,12 @@ export default function ProductMenu() {
 
   const handleUpdateProduct = (e) => {
     e.preventDefault();
-    setProducts(products.map(product => 
-      product.id === editingProduct.id 
+    setProducts(products.map(product =>
+      product.id === editingProduct.id
         ? {
-            ...editingProduct,
-            image: editingProduct.imagePreview || editingProduct.image
-          } 
+          ...editingProduct,
+          image: editingProduct.imagePreview || editingProduct.image
+        }
         : product
     ));
     setIsEditProductOpen(false);
@@ -555,22 +576,21 @@ export default function ProductMenu() {
 
         <Table>
           <TableHeader className="rounded-lg bg-[#F5F5F5] text-[#757575] font-poppins font-semibold">
-
             <TableRow>
-              <TableHead>Product</TableHead>
+              <TableHead>Product ID</TableHead>
+              <TableHead>Product Name</TableHead>
               <TableHead>Category</TableHead>
               <TableHead>Offer Type</TableHead>
               <TableHead>Stock</TableHead>
-              <TableHead>Status</TableHead>
               <TableHead>Price</TableHead>
               <TableHead>Action</TableHead>
             </TableRow>
-
           </TableHeader>
 
           <TableBody>
             {currentProducts.map((product) => (
               <TableRow key={product.id}>
+                <TableCell>{product.id}</TableCell>
                 <TableCell className="flex items-center gap-2">
                   <img
                     src={product.image}
@@ -584,27 +604,16 @@ export default function ProductMenu() {
                 </TableCell>
                 <TableCell>{product.offerType}</TableCell>
                 <TableCell>{product.stock}</TableCell>
-
-                <TableCell>
-                  {product.status == "Active" ?
-                    <Badge variant="secondary" className="bg-[#E6F7D9] text-[#56CA00] text-[0.9rem] rounded-md">Active</Badge>
-                    :
-                    <Badge variant="secondary" className="bg-[#FFE4E5] text-[#FF4C51] text-[0.9rem] rounded-md">Deactivated</Badge>
-                  }
-
-
-                </TableCell>
-
                 <TableCell>${product.price}</TableCell>
                 <TableCell>
                   <div className="flex items-center gap-2">
-                    <Button
+                    {/* <Button
                       variant="ghost"
                       size="icon"
                       onClick={() => handleEdit(product)}
                     >
                       <PenIcon className="w-4 h-4" />
-                    </Button>
+                    </Button> */}
                     <Button
                       variant="ghost"
                       size="icon"
