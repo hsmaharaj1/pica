@@ -499,9 +499,8 @@ export default function ProductMenu() {
             <TableRow>
               <TableHead>Product ID</TableHead>
               <TableHead>Product Name</TableHead>
-              <TableHead>Category</TableHead>
-              <TableHead>Offer Type</TableHead>
-              <TableHead>Stock</TableHead>
+              <TableHead>Description</TableHead>
+              <TableHead>Offer Status</TableHead>
               <TableHead>Price</TableHead>
               <TableHead>Action</TableHead>
             </TableRow>
@@ -519,21 +518,11 @@ export default function ProductMenu() {
                   />
                   <span>{product.name}</span>
                 </TableCell>
-                <TableCell>
-                  <Badge variant="secondary" className="h-[2rem] rounded-md">{product.category}</Badge>
-                </TableCell>
-                <TableCell>{product.offerType}</TableCell>
-                <TableCell>{product.stock}</TableCell>
+                <TableCell>{product.description}</TableCell>
+                <TableCell>{product.status}</TableCell>
                 <TableCell>${product.price}</TableCell>
                 <TableCell>
                   <div className="flex items-center gap-2">
-                    {/* <Button
-                      variant="ghost"
-                      size="icon"
-                      onClick={() => handleEdit(product)}
-                    >
-                      <PenIcon className="w-4 h-4" />
-                    </Button> */}
                     <Button
                       variant="ghost"
                       size="icon"
